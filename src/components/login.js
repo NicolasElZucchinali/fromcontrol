@@ -20,10 +20,12 @@ function Login(){
             <div id='signInButton'>
                 <GoogleLogin
                 buttonText='Login'
+                scope = "https://www.googleapis.com/auth/drive', https://www.googleapis.com/auth/classroom.courses"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={'single_host_origin'}
                 isSignedIn={true}
+                flow= 'auth-code'
                 />
             </div>
         </GoogleOAuthProvider>
