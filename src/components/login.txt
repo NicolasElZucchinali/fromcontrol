@@ -1,0 +1,36 @@
+const GoogleSocial  = ()=> {
+
+    //const [isPending, setIsPending] = useState(false)
+    //setIsPending(true)
+
+    return(
+        <GoogleOAuthProvider clientId="104215956377-cmhsl8dngd83fj6c673j9jhjot03qkhd.apps.googleusercontent.com">
+            {/* <GoogleLogin
+                onSuccess={googleLogin}
+            /> */}
+
+            <div className="App">
+                <h1>Login</h1>
+                <div className="inputForm">
+                    <button onClick={googleLogin}>
+                        <img src="images/google.png" className="loginG"/>
+                        <span className="loginText">Sign in</span>
+                    </button>
+                </div>
+
+            </div>
+        </GoogleOAuthProvider>
+    )
+}
+
+
+const googleLogin = useGoogleLogin({
+    onSuccess,
+    onFailure,
+    isSignedIn: true,
+    accessType: "offline",
+    scope: "https://www.googleapis.com/auth/drive', https://www.googleapis.com/auth/classroom.courses",
+    responseType: "code",
+    prompt: "consent",
+    flow: 'auth-code'
+});
