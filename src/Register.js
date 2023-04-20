@@ -11,16 +11,23 @@ const Register = () => {
         e.preventDefault();
         const registration = {email, password, confirmPassword};
 
+        var formData = new FormData();
+        formData.append("rmodel", JSON.stringify(registration));
+        
+        console.log(formData);
+
+        var data = JSON.stringify(registration);
+        console.log(data);
         setIsPending(true)
 
-        fetch('http://95.253.134.188/Account/Register',{
+        fetch('https://localhost:5173/Account/Register',{
 
             method: 'POST',
-            headers: {"Content-Type" : "application/json"},
-            body: JSON.stringify(registration),
+            body: formData,
             mode: "no-cors"
 
-        }).then(()=>{
+        }).then((e)=>{
+            console.log(e);
             console.log("Registration sended");
             setIsPending(false)
         }).catch((err) => {
