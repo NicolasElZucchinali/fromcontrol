@@ -24,9 +24,10 @@ function Login(){
             method: 'POST',
             body: dataGoogle,
         }).then(r=>r.json()).then(res=>{
-            if(res){
-            this.setState({message:'New Employee is Created Successfully'});
-            }
+            console.log(res);
+            /* if(res){
+                this.setState({message:'Accepted'});
+            } */
         });
     }
 
@@ -35,7 +36,6 @@ function Login(){
         <div id='signInButton'>
             <GoogleLogin
             buttonText='Login'
-            scope = {"https://www.googleapis.com/auth/drive', https://www.googleapis.com/auth/classroom.courses"}
             onSuccess={handleLoginNetCore}
             onFailure={onFailure}
             cookiePolicy={'single_host_origin'}
