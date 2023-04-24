@@ -5,7 +5,7 @@ const clientID = "104215956377-cmhsl8dngd83fj6c673j9jhjot03qkhd.apps.googleuserc
 
 // 104215956377-cmhsl8dngd83fj6c673j9jhjot03qkhd.apps.googleusercontent.com  , https://www.googleapis.com/auth/classroom.courses
 
-function Login(){
+function Authorize(){
 
 
 
@@ -55,4 +55,4 @@ function Login(){
 }
 
 
-export default Login;
+export default Authorize;
