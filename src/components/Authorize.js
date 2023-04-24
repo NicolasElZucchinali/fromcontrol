@@ -33,7 +33,8 @@ function Authorize(){
         console.log(code);
 
         var dataGoogle = new FormData();
-        dataGoogle.append("code", code);
+        dataGoogle.append("GoogleAccessToken", code);
+
 
         fetch('https://localhost:5173/Account/GoogleTokenTrafficLight',{
             method: 'POST',
