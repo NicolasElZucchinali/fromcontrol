@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import Create from './Create'
-import Register from './Register'
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AskPermissions from './AskPermissions';
+import HomePage from './Home';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App/>
-    <Register />
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<HomePage />}/>
+        <Route path="askpermission" element={<AskPermissions />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

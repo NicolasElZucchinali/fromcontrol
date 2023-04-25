@@ -1,9 +1,6 @@
 import { useGoogleLogin} from '@react-oauth/google';
+import Cookies from 'js-cookie';
 
-const clientID = "104215956377-cmhsl8dngd83fj6c673j9jhjot03qkhd.apps.googleusercontent.com";
-
-
-// 104215956377-cmhsl8dngd83fj6c673j9jhjot03qkhd.apps.googleusercontent.com  , https://www.googleapis.com/auth/classroom.courses
 
 function Authorize(){
 
@@ -11,29 +8,29 @@ function Authorize(){
 
     const googleLogin = useGoogleLogin({
         flow: 'auth-code',
+        access_type: "offline",
+        prompt:'consent',
         scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/classroom.courses",
         onSuccess: async (codeResponse) => {
+            console.log(codeResponse);
             handleAuthNetCore(codeResponse.code);
         },
         onError: errorResponse => console.log(errorResponse),
     });
-
-
-    /* const onSuccess = (res) => {
-        console.log(res);
-        console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
-        handleLoginNetCore(res);
-    }
-
-    const onFailure = (res) => {
-        console.log("LOGIN FAILED! res: ", res);
-    }
- */
+    
     const handleAuthNetCore = (code) => {
-        console.log(code);
+        
+
+        const token = Cookies.get('auth');
+        var userRequest  = JSON.stringify({ "GoogleAccessToken" : code, "EduversoToken" : token })
+
+        const currTime = new Date().toLocaleTimeString();
+        console.log(currTime);
 
         var dataGoogle = new FormData();
-        dataGoogle.append("GoogleAccessToken", code);
+        dataGoogle.append("userRequest", userRequest);
+
+        console.log(dataGoogle);
 
 
         fetch('https://localhost:5173/Account/GoogleTokenTrafficLight',{
@@ -48,7 +45,7 @@ function Authorize(){
 
     return(
         
-        <div id='signInButton'>
+        <div id='permissionbutton'>
             <button onClick={googleLogin} className='btn btn-primary'> Google Login </button> 
         </div>
         
