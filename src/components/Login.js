@@ -41,10 +41,13 @@ function Login(){
                 Cookies.set('auth', parsed["EduversoToken"],  {secure: true, sameSite: 'None'});
                 
 
-                //trying redirect
-            }).then(
+                //DO REDIRECTION HERE
+                  
+            }) 
+            //THIS REDIRECTION NOT WORKING
+            /* .then(
                 window.location.href = '/askpermission'
-            );
+            ); */
     }
 
     return(

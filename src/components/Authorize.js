@@ -17,6 +17,8 @@ function Authorize(){
         },
         onError: errorResponse => console.log(errorResponse),
     });
+
+    
     
     const handleAuthNetCore = (code) => {
         
@@ -24,13 +26,10 @@ function Authorize(){
         const token = Cookies.get('auth');
         var userRequest  = JSON.stringify({ "GoogleAccessToken" : code, "EduversoToken" : token })
 
-        const currTime = new Date().toLocaleTimeString();
-        console.log(currTime);
 
         var dataGoogle = new FormData();
         dataGoogle.append("userRequest", userRequest);
 
-        console.log(dataGoogle);
 
 
         fetch('https://localhost:5173/Account/GoogleTokenTrafficLight',{
