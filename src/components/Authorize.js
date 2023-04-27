@@ -37,7 +37,11 @@ function Authorize(){
             body: dataGoogle,
         }).then(r=>r.json()).then(res=>{
             if(res){
-                this.setState({message:'New student access token'});
+                
+                //Need an handle what the fuck is state?
+
+                console.log(res);
+                //this.setState({message:'New student access token'});
             }
         });
     }
