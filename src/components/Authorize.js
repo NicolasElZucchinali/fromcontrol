@@ -1,10 +1,12 @@
 import { useGoogleLogin} from '@react-oauth/google';
+
 import Cookies from 'js-cookie';
+
 
 
 function Authorize(){
 
-
+    
 
     const googleLogin = useGoogleLogin({
         flow: 'auth-code',
@@ -49,6 +51,7 @@ function Authorize(){
     return(
         
         <div id='permissionbutton'>
+            
             <button onClick={googleLogin} className='btn btn-primary'> Google Login </button> 
         </div>
         

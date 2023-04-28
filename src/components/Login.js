@@ -1,5 +1,7 @@
 import { GoogleLogin} from '@react-oauth/google';
+
 import Cookies from 'js-cookie';
+
 
 
 function Login(){
@@ -12,8 +14,9 @@ function Login(){
 
         var dataGoogle = new FormData();
         dataGoogle.append("code", JSON.stringify(res));
-        
-        console.log(res);
+
+        var googleUserCredential = res;
+        console.log(googleUserCredential);
 
         fetch('https://localhost:5173/Account/GoogleUserLogin',{
             method: 'POST',
@@ -44,11 +47,16 @@ function Login(){
                 //DO REDIRECTION HERE
                   
             }) 
+
+            
             //THIS REDIRECTION NOT WORKING
             /* .then(
                 window.location.href = '/askpermission'
             ); */
     }
+    function redirectAuth(){
+        window.location.href = '/askpermission'
+    };
 
     return(
         
@@ -63,6 +71,8 @@ function Login(){
             isSignedIn={true}
             flow= 'auth-code'
             />
+            <button className="btn btn-primary my-4" id="procediBtn" onClick={redirectAuth}>Procedi</button>
+           
         </div>
         
     )
