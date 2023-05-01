@@ -18,7 +18,7 @@ function Login(){
         var googleUserCredential = res;
         console.log(googleUserCredential);
 
-        fetch('https://localhost:5173/Account/GoogleUserLogin',{
+        fetch('https://accademiaetic.eu/Account/GoogleUserLogin',{
             method: 'POST',
             body: dataGoogle,
         }).then(

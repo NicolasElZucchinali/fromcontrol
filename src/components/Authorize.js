@@ -34,7 +34,7 @@ function Authorize(){
 
 
 
-        fetch('https://localhost:5173/Account/GoogleTokenTrafficLight',{
+        fetch('https://accademiaetic.eu/Account/GoogleTokenTrafficLight',{
             method: 'POST',
             body: dataGoogle,
         }).then(r=>r.json()).then(res=>{
